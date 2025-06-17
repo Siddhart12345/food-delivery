@@ -1,0 +1,14 @@
+.home_screen{
+    background-color: #111;
+    height: 100vh;
+    width: 100%;
+    .header_section{
+        height: 150px;
+        
+
+    }
+    .body_section{
+        height: calc(100% - 150px);
+        background-color: yellow;
+    }
+}
