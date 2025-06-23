@@ -12,7 +12,7 @@ const FilterComponent:React.FC = () => {
             your location
           </div>
           <div className="location">
-            Lorem, ipsum dolor.
+            location:-Jamshedpur,Jharkhand
           </div>
         </div>
         <div className="search_container">

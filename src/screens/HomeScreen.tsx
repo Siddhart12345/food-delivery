@@ -2,7 +2,17 @@ import { IonContent,  IonPage } from '@ionic/react';
 import './HomeScreen.scss';
 import FilterComponent from '../component/homeComponent/FilterComponent';
 import HomeBanner from '../component/homeComponent/HomeBanner';
+import RestaurantCard from '../component/homeComponent/RestaurantCard';
+import { useEffect, useState } from 'react';
+import { getAllRestaurants } from '../services/api';
+import { IRestaurant } from '../interfaces/restaurant';
 const HomeScreen: React.FC = () => {
+const[allrestaurants,setAllRestaurants]=useState<IRestaurant[]>()
+  useEffect(()=>{
+    void  getAllRestaurants().then((response)=>{
+      setAllRestaurants(response)
+    })
+  },[])
   return (
     <IonPage>
       
@@ -13,6 +23,13 @@ const HomeScreen: React.FC = () => {
        <div className='body_section'>
         <div className="banner_section">
           <HomeBanner/>
+        </div>
+        <div className="restaurant_section">
+          {allrestaurants && allrestaurants.map((restaurant,restaurantIndex)=>
+          {return(<div key={restaurantIndex}><RestaurantCard restaurantData={restaurant}/></div>
+          )
+          })}
+          
         </div>
        </div>
        </div>

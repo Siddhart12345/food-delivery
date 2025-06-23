@@ -2,6 +2,7 @@
     background-color: #111;
     height: 100vh;
     width: 100%;
+    overflow: hidden;
     .header_section{
         height: 150px;
         
@@ -9,9 +10,19 @@
     }
     .body_section{
         height: calc(100% - 150px);
-        background-color: yellow;
+        background-color: white;
         border-top-left-radius: 25px;
         border-top-right-radius: 25px;
         padding: 15px;
+        overflow-y: auto;
+        .restaurant_section{
+            margin-top: 30px;
+            margin-bottom: 30px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+            align-items: center;
+        }
     }
 }
