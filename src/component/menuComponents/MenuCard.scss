@@ -1,0 +1,52 @@
+.menu_card{
+    width: 100%;
+    height: 130px;
+    display: flex;
+    align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+    border-radius: 5px;
+    overflow: hidden;
+
+    .image_section{
+        width: 30%;
+        height: 100%;
+        border-radius: 5px;
+        
+        img{
+          height: 100%;
+          width: 100%;
+          object-fit: cover;
+          border-radius: 5px;
+        }
+    
+    }
+    .content_section{
+        width: 70%;
+        height: 100%;
+        padding: 7px 10px;
+        .title{
+            font-size: 16px;
+           font-weight: 700;
+           color: #555555;
+
+        }
+        .description{
+            font-size: 14px;
+            font-weight: 400;
+            color: #968f8f;
+            margin-top: 5px;
+
+        }
+        .button{
+            margin-top: 10px;
+            width: max-content;
+                    padding: 7px 10px;
+                    background-color: #cd5721;
+                    font-size: 13px;
+                    font-weight: 500px;
+                    color: #fff;
+                    border-radius: 5px;
+        }
+
+    }
+}
