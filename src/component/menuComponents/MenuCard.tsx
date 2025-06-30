@@ -2,10 +2,11 @@ import React from 'react'
 import './MenuCard.scss'
 import { IMenuItems } from '../../interfaces/restaurant'
 interface ItemsCardProps{
-    itemData:IMenuItems
+    itemData:IMenuItems,
+    addItem:(Data:IMenuItems)=> void;
 }
 
-const MenuCard: React.FC<ItemsCardProps>= ({itemData}) => {
+const MenuCard: React.FC<ItemsCardProps>= ({itemData,addItem}) => {
   return (
     
       <div className="menu_card">
@@ -19,9 +20,16 @@ const MenuCard: React.FC<ItemsCardProps>= ({itemData}) => {
             <div className="description">
                 {itemData.description}
             </div>
-            <div className="button">
+            <div className="price_detail">
+                <div className="price">
+                    ₹
+                    {itemData.price}
+                </div>
+                <div className="button" onClick={()=>{addItem(itemData);}}>
                 Add Item
             </div>
+            </div>
+            
         </div>
     
     </div>

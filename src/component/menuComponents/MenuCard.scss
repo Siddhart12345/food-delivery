@@ -37,8 +37,19 @@
             margin-top: 5px;
 
         }
+        .price_detail{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top:10px ;
+        
+        .price{
+     font-size: 20px;
+     font-weight:600 ;
+     color: #555555;
+        }
         .button{
-            margin-top: 10px;
+        
             width: max-content;
                     padding: 7px 10px;
                     background-color: #cd5721;
@@ -46,7 +57,9 @@
                     font-weight: 500px;
                     color: #fff;
                     border-radius: 5px;
-        }
+        
+    }
+    }
 
     }
 }
