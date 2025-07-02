@@ -17,18 +17,17 @@ price: number;
 description: string;
 }
 export interface ICart{
-    _id?: string;
+    _id? : string;
     restaurantId : string;
-    items: ICartItem[];
-    totalPrice: number;
-
-
+    items : ICartItem[];
+    totalPrice : number;
 }
-
 export interface ICartItem{
+    itemImage:string;
+    description:string;
     itemId: string;
-    price: number;
-    name:string;
-    quantity:number;
-    totalItemPrice:number;
+    price : number;
+    name : string;
+    quantity : number;
+    totalItemPrice : number;
 }

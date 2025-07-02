@@ -1,6 +1,5 @@
 import { IMenuItems, IRestaurant } from "../interfaces/restaurant";
-
- export const restaurantList: IRestaurant[] = [
+export const restaurantList: IRestaurant[] = [
   {
     _id: "1",
     name: "Spice Garden Grill",
@@ -20,7 +19,7 @@ import { IMenuItems, IRestaurant } from "../interfaces/restaurant";
   {
     _id: "3",
     name: "Burger Stack House",
-    image: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=400&h=250&fit=crop",
+    image: "https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=400&h=250&fit=crop",
     description: "Juicy burgers and fries",
     currentOffer: "Buy 1 Get",
     rating: 4.8,
@@ -36,13 +35,12 @@ import { IMenuItems, IRestaurant } from "../interfaces/restaurant";
   {
     _id: "5",
     name: "Royal Punjabi Tandoor",
-    image: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=400&h=250&fit=crop",
+    image: "https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=400&h=250&fit=crop",
     description: "Classic Punjabi tandoori dishes",
     currentOffer: "Flat 30%",
     rating: 4.6,
   }
 ];
-
 export const menuItemsList: IMenuItems[] = [
   // Spice Garden Grill
   {
@@ -251,6 +249,6 @@ export const menuItemsList: IMenuItems[] = [
     name: "Punjabi Lassi",
     image: "https://images.unsplash.com/photo-1621619773860-5475dfcefc3e?w=400&h=250&fit=crop",
     price: 60,
-    description: "Chilled sweet yogurt drink with cardamom flavor"
+    description: "Chilled sweet yogurt drink with cardamom flavor"
   }
 ];
