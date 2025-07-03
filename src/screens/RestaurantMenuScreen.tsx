@@ -2,17 +2,18 @@ import React, { useEffect, useState } from "react";
 import "./RestaurantMenuScreen.scss";
 import { IonContent, IonPage } from "@ionic/react";
 import MenuCard from "../component/menuComponents/MenuCard";
-import { useHistory, useParams } from "react-router";
+import { useHistory, useLocation, useParams } from "react-router";
 import { getItemsByRestaurantId, getRestaurantById } from "../services/api";
 import { ICart, IMenuItems, IRestaurant } from "../interfaces/restaurant";
 const RestaurantMenuScreen: React.FC = () => {
-  const [restaurantCart, setRestaurantCart] = useState<ICart>();
+  const [restaurantCart, setRestaurantCart] = useState<ICart|null>(null);
   const [allRestaurantMenuItems, setAllRestaurantMenuItems] = useState<
     IMenuItems[]
   >([]);
   const [restaurantData, setRestaurantData] = useState<IRestaurant>();
   const { restaurantId } = useParams<{ restaurantId: string }>();
   const history = useHistory();
+  const location=useLocation();
 
   useEffect(() => {
     getRestaurantById(restaurantId)
@@ -31,6 +32,32 @@ const RestaurantMenuScreen: React.FC = () => {
         console.log(error);
       });
   }, []);
+  useEffect(() => {
+    const cartString = localStorage.getItem("restaurantCart");
+
+    // if (cartString && cartString !== "undefined" && cartString !== "null") {
+    //   const cartData: ICart = JSON.parse(cartString);
+    //   setRestaurantCart(cartData);
+    // } else {
+    //   setRestaurantCart(null);
+    // }
+    if (cartString && cartString !== "undefined" && cartString !== "null") {
+      try {
+        const cartData: ICart = JSON.parse(cartString);
+
+        if (cartData.restaurantId === restaurantId) {
+          setRestaurantCart(cartData);
+        } else {
+          setRestaurantCart(null);
+        }
+      } catch (error) {
+        console.error("Invalid cart data in localStorage:", error);
+        setRestaurantCart(null);
+      }
+    }
+  }, [location.key]);
+
+  
 
   useEffect(() => {
     const cartString = localStorage.getItem("restaurantCart");
@@ -49,9 +76,10 @@ const RestaurantMenuScreen: React.FC = () => {
   const handleAddItemsInCart = (menuItem: IMenuItems) => {
     console.log(menuItem);
     let newCart: ICart;
-    if (restaurantCart !== undefined) {
+    if (restaurantCart !== null) {
       newCart = { ...restaurantCart, items: [...restaurantCart.items] };
     } else {
+      localStorage.removeItem("restaurantCart");
       newCart = {
         restaurantId: restaurantId,
         items: [],
@@ -114,6 +142,7 @@ const RestaurantMenuScreen: React.FC = () => {
               back
             </div>
             <div className="title">{restaurantData?.name}</div>
+            {restaurantCart !== null && (
             <div
               className="back_button"
               onClick={() => {
@@ -122,7 +151,9 @@ const RestaurantMenuScreen: React.FC = () => {
             >
               Go to Cart
             </div>
+            )}
           </div>
+            
           <div className="menu_body">
             <div className="menu_card_section">
               {allRestaurantMenuItems &&

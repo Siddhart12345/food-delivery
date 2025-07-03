@@ -4,8 +4,14 @@ import { ICartItem } from "../../interfaces/restaurant";
 
 interface ICartItemProps {
   cartItemData: ICartItem;
+  itemIndex: number;
+  incrementOrDecrement: (index: number, method: string) => void;
 }
-const CartItem: React.FC<ICartItemProps> = ({ cartItemData }) => {
+const CartItem: React.FC<ICartItemProps> = ({
+  cartItemData,
+  itemIndex,
+  incrementOrDecrement,
+}) => {
   return (
     <>
       <div className="cart_item">
@@ -21,9 +27,21 @@ const CartItem: React.FC<ICartItemProps> = ({ cartItemData }) => {
         <div className="item_controls">
           <span>₹ {cartItemData.totalItemPrice}</span>
           <div className="quantity_buttons">
-            <button>-</button>
+            <button
+              onClick={() => {
+                incrementOrDecrement(itemIndex, "decrement");
+              }}
+            >
+              -
+            </button>
             <span>{cartItemData.quantity}</span>
-            <button>+</button>
+            <button
+              onClick={() => {
+                incrementOrDecrement(itemIndex, "increment");
+              }}
+            >
+              +
+            </button>
           </div>
         </div>
       </div>
